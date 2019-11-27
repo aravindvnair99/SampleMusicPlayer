@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,16 +20,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (mediaPlayer != null) {
+                    mediaPlayer.seekTo(0);
                     mediaPlayer.start();
                 }
             }
         });
-        Button pauseButton = findViewById(R.id.pause_button);
+        final Button pauseButton = findViewById(R.id.pause_button);
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mediaPlayer != null) {
-                    mediaPlayer.pause();
+                    if (mediaPlayer.isPlaying()) {
+                        mediaPlayer.pause();
+                        pauseButton.setText(R.string.resume);
+                    } else {
+                        mediaPlayer.start();
+                        pauseButton.setText(R.string.pause);
+                    }
                 }
             }
         });
