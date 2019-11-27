@@ -1,14 +1,11 @@
 package com.example.musicplayer;
 
 import android.media.MediaPlayer;
-import android.media.AudioManager;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
